@@ -1,15 +1,14 @@
+let computerScore = 0;
+let userScore = 0;
+let userChoice;
+let bestOfScore = 3;
+
 const choice = [
     "rock",
     "paper",
     "scissors",
 ];
 
-let computerScore = 0;
-let userScore = 0;
-let userChoice;
-let bestOfScore = 3;
-
-// Consider switch statement for buttons
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
@@ -23,12 +22,9 @@ rockBtn.addEventListener("click", () => userChoice = choice[0]);
 paperBtn.addEventListener("click", () => userChoice = choice[1]);
 scissorsBtn.addEventListener("click", () => userChoice =choice[2]);
 
-evalBtn.addEventListener("click", () => evaluateWinner(getComputerChoice(), userChoice));
+evalBtn.addEventListener("click", () => evaluateWinner(computerChoice(), userChoice));
 
-function getComputerChoice() {
-    const index = Math.floor(Math.random() * 3)
-    return choice[index]
-};
+const computerChoice = () => choice[Math.floor(Math.random() * 3)];
 
 function evaluateWinner(computer, user) {
     console.log(`Computer choice: ${computer}`);
@@ -73,18 +69,6 @@ function updateScore() {
         case computerScore:
             log.textContent = "Better luck next time! Play again?";
         case userScore:
-            log.textContent = "You won!"
+            log.textContent = "You won!";
     }
 };
-
-// function game() {
-//     // while (computerScore < 3 || userScore < 3) {
-//     //     if (computerScore === 3 || userScore === 3) {
-//     //         console.log("GAME OVER");
-//     //         break;
-//     //     }
-//         evaluateWinner(getComputerChoice(), getUserChoice());  
-//     }
-// }
-
-// game();
